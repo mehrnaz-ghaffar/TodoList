@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Todo List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="container">
+        <h1>My Todo List</h1>
+
+        <div>
+            <input @keyup.enter="isEditing ? updateTask() : store()" type="text" v-model="task"/>
+            <button @click="updateTask" v-if="isEditing">update</button>
+            <button @click="store" v-else>add</button>
+        </div>
+
+        <ul>
+          <li v-for="(task, index) in toDos">
+            {{task}}
+            <button @click="editTask(index, task)">Edit</button>
+            <button @click="deleteTask(index)">Delete</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      new Vue({
+        el: "#app",
+        data() {
+          return {
+            selctedIndex: null,
+            isEditing: false,
+            task: "",
+            toDos: []
+          };
+        },
+
+        methods: {
+          store() {
+            this.toDos.push(this.task);
+            this.task = "";
+          },
+
+          editTask(index, task){
+              this.task = task;
+              this.isEditing = true;
+              this.selctedIndex = index;
+          },
+
+          deleteTask(index){
+            this.toDos.splice(index,1);
+            console.log(this.selctedIndex)
+          },
+
+          updateTask(){
+              this.toDos.splice(this.selctedIndex,1,this.task);
+              this.isEditing = false;
+              this.task = "";
+          }
+        },
+      });
+    </script>
+  </body>
+</html>
