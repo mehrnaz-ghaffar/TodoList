@@ -2,13 +2,14 @@ body{
     padding: 0;
     margin: 0;
     background-color: #e5e5e5;
+    /* background-image: url(images/backgroung.jpg); */
 }
 
 h1{
     padding-top: 20px;
     text-align: center;
     color: #14213d;
-    font-family: 'Pacifico', cursive;
+    font-family: 'Caramel', cursive;
     
 }
 
@@ -30,10 +31,62 @@ button{
 }
 
 input{
-    border-radius: 5px;
-    width: 92%;
+    border-radius: 5px;  
     height: 20px;
     font-size: 15px;
+}
+
+#input{
+    width: 92%;
+}
+
+input[type=checkbox] {
+    display: none;
+}
+
+input[type=checkbox] + label{
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 25px;
+    color: black;
+    padding-left: 30px;
+    margin-left: 8px;
+    margin-top: 6px;
+
+}
+
+input[type=checkbox] + label::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 18px;
+    width: 18px;
+    outline: 2px solid black;
+    background: #fff;
+}
+
+/* input[type=checkbox]:checked + label::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 18px;
+    width: 18px;
+    outline: 2px solid green;
+    background: #fff;
+} */
+
+input[type=checkbox]:checked + label::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 18px;
+    width: 18px;
+    background-image: url(images/checkmarck.png);
+    background-size: contain;
 }
 
 li{
@@ -45,3 +98,16 @@ li{
     list-style-type : none;
 
 }
+
+input[type="checkbox"]:checked {
+    text-decoration: line-through;
+    color: blue;
+    background-color: aquamarine;
+}
+
+i{
+    float: right;
+    margin: 7px;
+}
+
+  
