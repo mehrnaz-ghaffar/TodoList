@@ -4,7 +4,7 @@
     <title>Todo List</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caramel&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Birthstone&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="https://kit.fontawesome.com/0009810664.js" crossorigin="anonymous"></script>
@@ -12,7 +12,7 @@
   <body>
     <div id="app">
       <div class="container">
-        <h1>My Todo List</h1>
+        <h1> _____&nbsp; My Todo List &nbsp;_____</h1>
 
         <div>
             <input @keyup.enter="isEditing ? updateTask() : store()" type="text" id="input" v-model="task"/>
@@ -21,17 +21,15 @@
         </div>
 
         <ul>
-          <li v-for="(task, index) in toDos">
+          <li v-for="(task, index) in toDos" class="">
             
-            <input type="checkbox" id="checkbox">
-            <label for="checkbox" class="taskCheckbox">{{task}}</label>
-            <!-- <span>{{task}}</span> -->
+            <input type="checkbox" :id="'checkbox'+task.title" v-model="task.done">
+            <label :for="'checkbox'+task.title" class="taskCheckbox">{{task.title}}</label>
+            <!-- <span class="checkmark"></span> -->
             <i class="fas fa-edit" @click="editTask(index, task)"></i>
             <i class="fas fa-trash" @click="deleteTask(index)"></i>          
           </li>
         </ul>
-        
-        
       </div>
     </div>
 
@@ -49,7 +47,7 @@
 
         methods: {
           store() {
-            this.toDos.push(this.task);
+            this.toDos.push({ title: this.task, done: false });
             this.task = "";
           },
 
