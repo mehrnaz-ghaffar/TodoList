@@ -30,7 +30,7 @@ button {
   background-color: #f47068;
   color: black;
   height: 30px;
-  width: 50px;
+  width: 60px;
   float: right;
   font-size: 16px;
 }
@@ -42,7 +42,7 @@ input {
 }
 
 #input {
-  width: 92%;
+  width: 90%;
 }
 
 input[type="checkbox"] {
