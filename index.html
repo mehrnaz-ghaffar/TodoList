@@ -21,14 +21,13 @@
         </div>
 
         <ul>
-          <li v-for="(task, index) in toDos" class="">
-            
+          <li v-for="(task, index) in toDos" class="" >
             <input type="checkbox" :id="'checkbox'+task.title" v-model="task.done">
             <label :for="'checkbox'+task.title" class="taskCheckbox">{{task.title}}</label>
-            <!-- <span class="checkmark"></span> -->
             <i class="fas fa-edit" @click="editTask(index, task)"></i>
             <i class="fas fa-trash" @click="deleteTask(index)"></i>          
           </li>
+          
         </ul>
       </div>
     </div>
@@ -47,8 +46,14 @@
 
         methods: {
           store() {
-            this.toDos.push({ title: this.task, done: false });
-            this.task = "";
+            if(this.task===""){
+              alert("please write a task!")
+              return
+            }
+            else{
+              this.toDos.push({ title: this.task, done: false });
+              this.task = "";
+            }
           },
 
           editTask(index, task){
@@ -66,6 +71,12 @@
               this.toDos.splice(this.selctedIndex,1,this.task);
               this.isEditing = false;
               this.task = "";
+          },
+
+          emptyCheck(){
+              if(task.title===""){
+                alert("ekrkf")
+              }
           }
         },
       });
